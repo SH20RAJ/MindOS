@@ -42,6 +42,8 @@ import { Footer } from "@/components/layout/Footer";
 import { StackProvider, StackTheme } from "@stackframe/stack";
 import { stackServerApp } from "@/stack";
 
+import { TooltipProvider } from "@/components/ui/tooltip";
+
 export default function RootLayout({
 	children,
 }: Readonly<{
@@ -53,9 +55,11 @@ export default function RootLayout({
 				className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground flex flex-col min-h-screen`}
 			>
 				<StackProvider app={stackServerApp}>
-					{children}
-					<Navbar />
-					<Footer />
+					<TooltipProvider>
+						{children}
+						<Navbar />
+						<Footer />
+					</TooltipProvider>
 				</StackProvider>
 			</body>
 		</html>

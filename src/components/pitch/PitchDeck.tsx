@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, Terminal, Brain, Zap, Clock, ArrowRight } from "lucide-react";
+import { ChevronRight, Terminal, Brain, Zap, Clock, ArrowRight, Play, Pause } from "lucide-react";
 import Link from "next/link";
 
 const SLIDE_DURATION = 5000; // 5 seconds per slide
@@ -95,8 +95,27 @@ const slides = [
             </div>
         )
     },
-    {
-        id: "cta",
+import { CreativeBadges } from "@/components/ui/creative-badges";
+
+const pitchBadges = [
+    { id: "p1", label: "Recall", color: "from-cyan-500/80 to-blue-500/80", size: "lg", rotation: -6, zIndex: 1, offsetX: -80, offsetY: -40 },
+    { id: "p2", label: "Retain", color: "from-green-500/80 to-emerald-500/80", size: "lg", rotation: 4, zIndex: 2, offsetX: 80, offsetY: -40 },
+    { id: "p3", label: "Learn", color: "from-pink-500/80 to-purple-500/80", size: "lg", rotation: 0, zIndex: 3, offsetX: 0, offsetY: 60 },
+];
+
+// ... inside slides array ...
+{
+    id: "badges",
+        content: (
+            <div className="w-full flex-col flex items-center">
+                <h2 className="text-4xl font-bold text-white mb-8 tracking-tight">POWERED BY SCIENCE</h2>
+                <CreativeBadges badges={pitchBadges} />
+            </div>
+        )
+},
+{
+    id: "cta",
+        // ...
         content: (
             <div className="text-center space-y-12">
                 <h2 className="text-5xl md:text-8xl font-black tracking-tighter text-white">
@@ -117,7 +136,7 @@ const slides = [
                 </div>
             </div>
         )
-    }
+}
 ];
 
 export function PitchDeck() {
@@ -144,10 +163,29 @@ export function PitchDeck() {
         setIsPlaying(false);
     };
 
+    const togglePlay = () => setIsPlaying(!isPlaying);
+
+    // Keyboard Navigation
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "ArrowRight") {
+                nextSlide();
+            } else if (e.key === "ArrowLeft") {
+                prevSlide();
+            } else if (e.key === " ") {
+                e.preventDefault();
+                togglePlay();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [isPlaying]); // Re-bind when isPlaying changes to ensure toggle works correctly with closure? Actually setIsPlaying uses functional update so it's fine, but let's keep it clean.
+
     // Scroll Navigation
     useEffect(() => {
         let lastScrollTime = 0;
-        const cooldown = 1000; // 1 second cooldown to prevent rapid skipping
+        const cooldown = 1000;
 
         const handleWheel = (e: WheelEvent) => {
             const now = Date.now();
@@ -190,6 +228,18 @@ export function PitchDeck() {
             {/* Progress Bar & Controls */}
             <div className="absolute bottom-12 left-0 right-0 px-12">
                 <div className="max-w-xl mx-auto flex items-center gap-6">
+                    <button
+                        onClick={togglePlay}
+                        className="p-2 hover:bg-white/10 rounded-full transition-colors group"
+                        title={isPlaying ? "Pause (Space)" : "Play (Space)"}
+                    >
+                        {isPlaying ? (
+                            <Pause className="w-5 h-5 text-white/50 group-hover:text-white" />
+                        ) : (
+                            <Play className="w-5 h-5 text-white/50 group-hover:text-white" />
+                        )}
+                    </button>
+
                     <span className="font-mono text-xs text-muted-foreground">0{currentIndex + 1}</span>
 
                     <div className="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
@@ -197,8 +247,9 @@ export function PitchDeck() {
                             key={currentIndex}
                             initial={{ width: "0%" }}
                             animate={{ width: "100%" }}
-                            transition={{ duration: SLIDE_DURATION / 1000, ease: "linear" }}
+                            transition={isPlaying ? { duration: SLIDE_DURATION / 1000, ease: "linear" } : { duration: 0 }}
                             className="h-full bg-white"
+                            style={{ width: isPlaying ? "100%" : "0%" }} // Force reset if paused
                         />
                     </div>
 
