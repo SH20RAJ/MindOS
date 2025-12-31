@@ -4,6 +4,7 @@ import { MethodologyGrid } from "@/components/about/MethodologyGrid";
 import { TechStackTicker } from "@/components/about/TechStackTicker";
 import { Roadmap } from "@/components/about/Roadmap";
 import { Philosophy } from "@/components/about/Philosophy";
+import { AboutTestimonials } from "@/components/about/AboutTestimonials";
 
 import type { Metadata } from "next";
 
@@ -20,6 +21,7 @@ export default function About() {
             <MethodologyGrid />
             <Roadmap />
             <TechStackTicker />
+            <AboutTestimonials />
             <Philosophy />
         </main>
     );

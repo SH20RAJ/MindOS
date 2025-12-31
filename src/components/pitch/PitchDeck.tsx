@@ -136,13 +136,35 @@ export function PitchDeck() {
 
     const nextSlide = () => {
         setCurrentIndex((prev) => (prev + 1) % slides.length);
-        setIsPlaying(false); // Pause auto-play on manual interaction
+        setIsPlaying(false);
     };
 
     const prevSlide = () => {
         setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
         setIsPlaying(false);
     };
+
+    // Scroll Navigation
+    useEffect(() => {
+        let lastScrollTime = 0;
+        const cooldown = 1000; // 1 second cooldown to prevent rapid skipping
+
+        const handleWheel = (e: WheelEvent) => {
+            const now = Date.now();
+            if (now - lastScrollTime < cooldown) return;
+
+            if (e.deltaY > 50) {
+                nextSlide();
+                lastScrollTime = now;
+            } else if (e.deltaY < -50) {
+                prevSlide();
+                lastScrollTime = now;
+            }
+        };
+
+        window.addEventListener("wheel", handleWheel);
+        return () => window.removeEventListener("wheel", handleWheel);
+    }, []);
 
     return (
         <div className="relative h-screen w-full bg-black overflow-hidden flex items-center justify-center px-4">
