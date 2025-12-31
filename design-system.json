@@ -1,0 +1,228 @@
+{
+    "name": "Dhwani Design System",
+    "version": "1.1.0",
+    "meta": {
+        "description": "Comprehensive design language for the Dhwani Music Club platform. A dark, immersive, high-fidelity UI system grounded in musical metaphors.",
+        "authors": [
+            "Dhwani Tech Team"
+        ],
+        "lastUpdated": "2025-12-31"
+    },
+    "routes": {
+        "pages": [
+            {
+                "name": "Home",
+                "slug": "/",
+                "type": "Landing",
+                "features": [
+                    "Hero Odyssey",
+                    "Voice Chat",
+                    "News Ticker",
+                    "Events Preview"
+                ]
+            },
+            {
+                "name": "News",
+                "slug": "/news",
+                "type": "Archive/Blog",
+                "ui_theme": "The Resonance Newsletter",
+                "components": [
+                    "Bento Grid",
+                    "Subscribe Box"
+                ]
+            },
+            {
+                "name": "Events",
+                "slug": "/events",
+                "type": "Listing",
+                "ui_theme": "Tour Dates",
+                "components": [
+                    "Event Cards",
+                    "Ticket Stubs"
+                ]
+            },
+            {
+                "name": "Event Detail",
+                "slug": "/events/[slug]",
+                "type": "Detail",
+                "ui_theme": "Backstage Pass",
+                "components": [
+                    "Digital Ticket",
+                    "Lineup List"
+                ]
+            },
+            {
+                "name": "Team",
+                "slug": "/team",
+                "type": "Directory",
+                "ui_theme": "Vinyl Collection",
+                "components": [
+                    "Vinyl Sleeve Cards",
+                    "Liner Notes Modal"
+                ]
+            },
+            {
+                "name": "Archive",
+                "slug": "/archive",
+                "type": "Gallery",
+                "ui_theme": "The Vault",
+                "features": [
+                    "Year Filter",
+                    "Polaroid Grid"
+                ]
+            },
+            {
+                "name": "Archive Year",
+                "slug": "/archive/[year]",
+                "type": "Collection",
+                "ui_theme": "Film Strip Year View"
+            },
+            {
+                "name": "Archive Album",
+                "slug": "/archive/[year]/[slug]",
+                "type": "Gallery Detail",
+                "ui_theme": "Photo Album"
+            },
+            {
+                "name": "Charts",
+                "slug": "/bands",
+                "type": "Leaderboard",
+                "ui_theme": "Billboard Top Charts",
+                "components": [
+                    "Rank List",
+                    "Trend Indicators"
+                ]
+            },
+            {
+                "name": "Sitemap",
+                "slug": "/sitemap",
+                "type": "Utility",
+                "ui_theme": "Circuit Board Network",
+                "components": [
+                    "Node Graph"
+                ]
+            }
+        ]
+    },
+    "tokens": {
+        "colors": {
+            "mode": "dark",
+            "space": "oklch",
+            "palette": {
+                "background": {
+                    "default": "oklch(0.145 0 0) [Absolute Black]",
+                    "secondary": "oklch(0.205 0 0) [Dark Grey]",
+                    "accent": "oklch(0.269 0 0) [Deep Surface]"
+                },
+                "foreground": {
+                    "default": "oklch(0.985 0 0) [White]",
+                    "muted": "oklch(0.708 0 0) [Grey]",
+                    "subtle": "oklch(0.556 0 0) [Dark Grey]"
+                },
+                "brand": {
+                    "blue": "bg-blue-500 [Electric Blue]",
+                    "indigo": "bg-indigo-500 [Deep Purple]",
+                    "orange": "text-orange-500 [Vintage Amp]",
+                    "green": "text-green-500 [Signal Go]"
+                },
+                "status": {
+                    "success": "oklch(0.646 0.222 41.116)",
+                    "error": "oklch(0.577 0.245 27.325)"
+                }
+            }
+        },
+        "typography": {
+            "families": {
+                "sans": "Geist Sans (UI, Headings)",
+                "mono": "Geist Mono (Metadata, Labels, Code)"
+            },
+            "scale": {
+                "display-large": {
+                    "size": "text-[15vw]",
+                    "weight": "900",
+                    "tracking": "-0.05em",
+                    "lineHeight": "0.8"
+                },
+                "display-medium": {
+                    "size": "text-8xl",
+                    "weight": "900",
+                    "case": "uppercase"
+                },
+                "heading-1": {
+                    "size": "text-5xl",
+                    "weight": "700"
+                },
+                "label": {
+                    "size": "text-xs",
+                    "family": "mono",
+                    "case": "uppercase",
+                    "tracking": "0.2em"
+                }
+            }
+        },
+        "effects": {
+            "radius": {
+                "sm": "0.375rem",
+                "md": "0.5rem",
+                "lg": "0.625rem",
+                "full": "9999px"
+            },
+            "shadows": {
+                "glow": "0 0 20px rgba(59, 130, 246, 0.5)",
+                "deep": "0 20px 40px -15px rgba(0,0,0,0.8)"
+            },
+            "gradients": {
+                "aurora": "bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400",
+                "fade-bottom": "bg-gradient-to-t from-black via-black/50 to-transparent"
+            }
+        }
+    },
+    "components": {
+        "Navigation": {
+            "Navbar": {
+                "type": "Floating Dock",
+                "behavior": "Expands on scroll, Glassmorphism background",
+                "elements": {
+                    "Logo": "Frequency Visualizer (Animated Bars)",
+                    "Links": "Hover Reveal 'Fader' Background",
+                    "Mobile": "Full-screen 'Studio' Overlay"
+                }
+            }
+        },
+        "Hero": {
+            "HeroOdyssey": {
+                "concept": "Sonic Amplification",
+                "elements": [
+                    "Massive Typography (AMPLIFY)",
+                    "Interactive 3D Elements",
+                    "Noise Overlay",
+                    "Vertical Upcoming Events Ticker"
+                ]
+            }
+        },
+        "Cards": {
+            "VinylCard": {
+                "context": "Team Page",
+                "interaction": "Hover slides disc out of sleeve",
+                "visuals": "Spinning Record, Album Art Sleeve"
+            },
+            "NewsCard": {
+                "context": "News Page",
+                "layout": "Bento Grid (sizes: large, tall, wide, small)",
+                "interaction": "Image Zoom, Title Reveal"
+            },
+            "EventCard": {
+                "context": "Events Page",
+                "metaphor": "Concert Poster",
+                "elements": "Date Stack, Ticket Stub Button"
+            }
+        },
+        "Interactive": {
+            "Cursor": "Magnetic Follower",
+            "Buttons": {
+                "primary": "Solid White, Black Text, Rounded Full",
+                "outline": "Border White/20, Uppercase, Mono Font"
+            }
+        }
+    }
+}

@@ -13,21 +13,15 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
 	subsets: ["latin"],
-	display: "swap",
-	fallback: ["ui-monospace", "monospace"],
 });
 
 export const metadata: Metadata = {
-	title: {
-		default: "Mindos - Learn Everything. Scientifically. Fast.",
-		template: "%s | Mindos",
-	},
-	description: "AI-driven note taking and knowledge management for developers",
-	icons: {
-		icon: "/favicon.svg",
-		apple: "/apple-touch-icon.png",
-	},
+	title: "Dhwani Music Club",
+	description: "Amplifying the Frequency of Campus Culture.",
 };
+
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 
 export default function RootLayout({
 	children,
@@ -35,9 +29,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" suppressHydrationWarning>
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<Provider>{children}</Provider>
+		<html lang="en" className="dark">
+			<body
+				className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground flex flex-col min-h-screen`}
+			>
+				{children}
+				<Navbar />
+				<Footer />
 			</body>
 		</html>
 	);
