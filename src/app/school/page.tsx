@@ -1,55 +1,41 @@
-import { Flashcard } from "@/components/school/Flashcard";
-import { FeatureCard } from "@/components/home/FeatureCard";
-import { QuizGame } from "@/components/school/QuizGame";
+"use client";
 
-import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, Brain, GraduationCap } from "lucide-react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
-export const metadata: Metadata = {
-    title: "Mind School | Active Recall",
-    description: "Test your knowledge with active recall quizzes and spaced repetition flashcards.",
-};
-
-export default function SchoolPage() {
+export default function SchoolLanding() {
     return (
-        <main className="min-h-screen bg-background pt-32 pb-24 px-4 md:px-8">
-            <div className="max-w-7xl mx-auto">
-                <header className="mb-16 text-center">
-                    <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-white">
-                        Mind School
-                    </h1>
-                    <p className="text-xl text-muted-foreground font-mono tracking-widest">
-                        Scientific Tools Training Ground
-                    </p>
-                </header>
+        <div className="h-[calc(100vh-64px)] flex flex-col items-center justify-center relative overflow-hidden">
+            {/* Background Effects */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(79,70,229,0.1)_0%,transparent_60%)]" />
+            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
-                    {/* Flashcard Demo */}
-                    <div className="flex flex-col items-center">
-                        <h2 className="text-2xl font-bold uppercase tracking-tight mb-8 text-white/50">
-                            01. Active Recall
-                        </h2>
-                        <Flashcard
-                            category="Neuroscience"
-                            question="What is the Hebbian Theory of learning?"
-                            answer="Neurons that fire together, wire together."
-                        />
-                        <p className="mt-8 text-sm text-muted-foreground text-center max-w-sm">
-                            Interactive flashcards using 3D transforms. "Ticket Stub" aesthetic implies entry to knowledge.
-                        </p>
-                    </div>
+            <div className="relative z-10 text-center max-w-4xl px-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-mono text-indigo-400 mb-8">
+                    <Brain className="w-3 h-3" />
+                    BETA ACCESS FOR INSTITUTIONS
+                </div>
 
-                    {/* Concept Mapping / Other Tools Placeholder */}
-                    <div className="flex flex-col items-center">
-                        <h2 className="text-2xl font-bold uppercase tracking-tight mb-8 text-white/50">
-                            02. Gamified Testing
-                        </h2>
-                        <QuizGame />
-                        <p className="mt-8 text-sm text-muted-foreground text-center max-w-sm">
-                            "Terminal" style quizzes for immediate feedback loop. High-stakes testing environment simulation.
-                        </p>
-                    </div>
+                <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-white mb-6">
+                    THE COGNITIVE<br />CLASSROOM
+                </h1>
+
+                <p className="text-xl md:text-2xl text-muted-foreground font-mono max-w-2xl mx-auto mb-12">
+                    Don't just teach. Install knowledge.
+                    <br />
+                    The first Learning Operating System that guarantees retention.
+                </p>
+
+                <div className="flex items-center justify-center gap-4">
+                    <Link href="/school/dashboard" className="px-8 py-4 bg-white text-black font-bold rounded-full text-lg hover:bg-zinc-200 transition-colors flex items-center gap-2">
+                        Enter Admin Portal <ArrowRight className="w-5 h-5" />
+                    </Link>
+                    <button className="px-8 py-4 bg-black border border-white/20 text-white font-bold rounded-full text-lg hover:bg-white/10 transition-colors">
+                        Request Demo
+                    </button>
                 </div>
             </div>
-        </main>
+        </div>
     );
 }
