@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { useUser } from "@stackframe/stack";
 
 export function LaunchDashboard() {
+    const user = useUser();
+
     return (
         <section className="h-[60vh] md:h-[80vh] bg-zinc-950 border-t border-white/5 relative flex items-center justify-center overflow-hidden group">
             {/* Hover Reveal Effect */}
@@ -21,13 +24,13 @@ export function LaunchDashboard() {
                         UPGRADE YOUR<br />COGNITION.
                     </h2>
 
-                    <Link href="/dashboard">
+                    <Link href={user ? "/mindcloud" : "/handler/sign-up"}>
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className="bg-white text-black px-10 py-5 rounded-full text-lg md:text-xl font-bold tracking-wide hover:bg-zinc-200 transition-colors flex items-center gap-3 mx-auto"
                         >
-                            LAUNCH DASHBOARD <ArrowUpRight className="w-5 h-5" />
+                            {user ? "ENTER MINDOS" : "LAUNCH DASHBOARD"} <ArrowUpRight className="w-5 h-5" />
                         </motion.button>
                     </Link>
 

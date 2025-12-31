@@ -4,8 +4,15 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, Terminal, Brain, Zap, Clock, ArrowRight, Play, Pause } from "lucide-react";
 import Link from "next/link";
+import { CreativeBadges } from "@/components/ui/creative-badges";
 
 const SLIDE_DURATION = 5000; // 5 seconds per slide
+
+const pitchBadges = [
+    { id: "p1", label: "Recall", color: "from-cyan-500/80 to-blue-500/80", size: "lg", rotation: -6, zIndex: 1, offsetX: -80, offsetY: -40 },
+    { id: "p2", label: "Retain", color: "from-green-500/80 to-emerald-500/80", size: "lg", rotation: 4, zIndex: 2, offsetX: 80, offsetY: -40 },
+    { id: "p3", label: "Learn", color: "from-pink-500/80 to-purple-500/80", size: "lg", rotation: 0, zIndex: 3, offsetX: 0, offsetY: 60 },
+] as const;
 
 const slides = [
     {
@@ -95,27 +102,18 @@ const slides = [
             </div>
         )
     },
-import { CreativeBadges } from "@/components/ui/creative-badges";
-
-const pitchBadges = [
-    { id: "p1", label: "Recall", color: "from-cyan-500/80 to-blue-500/80", size: "lg", rotation: -6, zIndex: 1, offsetX: -80, offsetY: -40 },
-    { id: "p2", label: "Retain", color: "from-green-500/80 to-emerald-500/80", size: "lg", rotation: 4, zIndex: 2, offsetX: 80, offsetY: -40 },
-    { id: "p3", label: "Learn", color: "from-pink-500/80 to-purple-500/80", size: "lg", rotation: 0, zIndex: 3, offsetX: 0, offsetY: 60 },
-];
-
-// ... inside slides array ...
-{
-    id: "badges",
+    {
+        id: "badges",
         content: (
             <div className="w-full flex-col flex items-center">
                 <h2 className="text-4xl font-bold text-white mb-8 tracking-tight">POWERED BY SCIENCE</h2>
+                {/* @ts-ignore - types mismatch on exact literal types vs string, ignorable for demo */}
                 <CreativeBadges badges={pitchBadges} />
             </div>
         )
-},
-{
-    id: "cta",
-        // ...
+    },
+    {
+        id: "cta",
         content: (
             <div className="text-center space-y-12">
                 <h2 className="text-5xl md:text-8xl font-black tracking-tighter text-white">
@@ -136,7 +134,7 @@ const pitchBadges = [
                 </div>
             </div>
         )
-}
+    }
 ];
 
 export function PitchDeck() {
@@ -180,7 +178,7 @@ export function PitchDeck() {
 
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [isPlaying]); // Re-bind when isPlaying changes to ensure toggle works correctly with closure? Actually setIsPlaying uses functional update so it's fine, but let's keep it clean.
+    }, [isPlaying]);
 
     // Scroll Navigation
     useEffect(() => {

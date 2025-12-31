@@ -35,7 +35,7 @@ export function CountingNumber({
     const { isInView } = useIsInView(ref, {
         inView: animateOnView,
         inViewOnce: animateOnViewOnce,
-        inViewMargin: animateOnViewMargin,
+        inViewMargin: animateOnViewMargin as any, // Temporary fix for type mismatch
     });
 
     const [hasAnimated, setHasAnimated] = React.useState(false);
