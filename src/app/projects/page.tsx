@@ -7,6 +7,13 @@ const projects = [
     { id: 4, title: "Full Stack Development", category: "Skill", progress: 30, color: "bg-blue-500" },
 ];
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Projects | MindOS",
+    description: "Track your active learning projects and progress.",
+};
+
 export default function ProjectsPage() {
     return (
         <main className="min-h-screen bg-background pt-32 pb-24 px-4 md:px-8">

@@ -2,6 +2,13 @@ import { Flashcard } from "@/components/school/Flashcard";
 import { FeatureCard } from "@/components/home/FeatureCard";
 import { QuizGame } from "@/components/school/QuizGame";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Mind School | Active Recall",
+    description: "Test your knowledge with active recall quizzes and spaced repetition flashcards.",
+};
+
 export default function SchoolPage() {
     return (
         <main className="min-h-screen bg-background pt-32 pb-24 px-4 md:px-8">

@@ -2,6 +2,13 @@ import { FocusTimer } from "@/components/dashboard/FocusTimer";
 import { DailyReviewStack } from "@/components/dashboard/DailyReviewStack";
 import { FeatureCard } from "@/components/home/FeatureCard";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Dashboard | Mission Control",
+    description: "Manage your daily review stack and focus sessions.",
+};
+
 export default function DashboardPage() {
     return (
         <main className="min-h-screen bg-background pt-32 pb-24 px-4 md:px-8">

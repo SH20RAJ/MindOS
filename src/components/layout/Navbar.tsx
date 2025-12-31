@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { LayoutDashboard, FolderKanban, GraduationCap, User } from "lucide-react";
+import { UserButton } from "@stackframe/stack";
 
 const navItems = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -65,6 +66,12 @@ export function Navbar() {
                         </Link>
                     );
                 })}
+
+                <div className="h-6 w-px bg-white/10 mx-2" />
+
+                <div className="px-2">
+                    <UserButton />
+                </div>
             </motion.nav>
         </div>
     );

@@ -33,8 +33,8 @@ export function HeroOdyssey() {
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     className="relative"
                 >
-                    <h1 className="text-[15vw] leading-[0.8] font-black tracking-tighter text-white mix-blend-difference select-none">
-                        MINDOS
+                    <h1 className="text-[15vw] leading-[0.8] font-black tracking-tighter text-white mix-blend-difference select-none text-center">
+                        LEARN<br />EVERYTHING
                     </h1>
                     <motion.div
                         initial={{ width: 0 }}
@@ -48,10 +48,27 @@ export function HeroOdyssey() {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.5, duration: 0.8 }}
-                    className="mt-8 text-xl md:text-2xl font-mono text-muted-foreground uppercase tracking-[0.2em]"
+                    className="mt-8 text-xl md:text-2xl font-mono text-muted-foreground uppercase tracking-[0.2em] text-center max-w-2xl mx-auto"
                 >
-                    Master Anything. Scientifically.
+                    Scientifically. Fast. <br />
+                    <span className="text-sm normal-case tracking-normal opacity-70 mt-4 block">
+                        AI-driven note taking and knowledge management for developers. Capture ideas, organize thoughts, and retain information with the power of science.
+                    </span>
                 </motion.p>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8, duration: 0.8 }}
+                    className="mt-8 flex gap-4"
+                >
+                    <button className="px-8 py-3 bg-white text-black font-bold rounded-full hover:scale-105 transition-transform">
+                        Start Learning Free
+                    </button>
+                    <button className="px-8 py-3 bg-transparent border border-white/20 text-white font-bold rounded-full hover:bg-white/10 transition-colors">
+                        Star on GitHub
+                    </button>
+                </motion.div>
             </motion.div>
 
             {/* Vertical Ticker Right */}

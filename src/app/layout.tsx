@@ -16,12 +16,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "Dhwani Music Club",
-	description: "Amplifying the Frequency of Campus Culture.",
+	title: {
+		default: "MindOS",
+		template: "%s | MindOS",
+	},
+	description: "Learn Everything. Scientifically. Fast. AI-driven knowledge management for developers.",
+	keywords: ["learning", "spaced repetition", "active recall", "developer tools", "knowledge management", "second brain"],
+	openGraph: {
+		title: "MindOS",
+		description: "Learn Everything. Scientifically. Fast.",
+		type: "website",
+		locale: "en_US",
+		siteName: "MindOS",
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "MindOS",
+		description: "Learn Everything. Scientifically. Fast.",
+	},
 };
 
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+
+import { StackProvider, StackTheme } from "@stackframe/stack";
+import { stackServerApp } from "@/stack";
 
 export default function RootLayout({
 	children,
@@ -33,9 +52,11 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground flex flex-col min-h-screen`}
 			>
-				{children}
-				<Navbar />
-				<Footer />
+				<StackProvider app={stackServerApp}>
+					{children}
+					<Navbar />
+					<Footer />
+				</StackProvider>
 			</body>
 		</html>
 	);
