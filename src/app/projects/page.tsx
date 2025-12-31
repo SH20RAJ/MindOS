@@ -1,4 +1,5 @@
 import { ProjectCard } from "@/components/projects/ProjectCard";
+import { CreateProjectButton } from "@/components/projects/CreateProjectButton";
 
 const projects = [
     { id: 1, title: "Quantum Physics Integration", category: "Academic", progress: 45, color: "bg-purple-500" },
@@ -28,6 +29,7 @@ export default function ProjectsPage() {
                 </header>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 place-items-center">
+                    <CreateProjectButton />
                     {projects.map(project => (
                         <ProjectCard key={project.id} {...project} />
                     ))}

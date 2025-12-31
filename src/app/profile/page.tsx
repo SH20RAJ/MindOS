@@ -15,7 +15,7 @@ export default function ProfilePage() {
                 {/* Header / Nav */}
                 <div className="flex items-center gap-4 text-muted-foreground hover:text-white transition-colors w-fit">
                     <ArrowLeft className="w-4 h-4" />
-                    <Link href="/mindcloud" className="text-sm font-bold tracking-widest uppercase">
+                    <Link href="/dashboard" className="text-sm font-bold tracking-widest uppercase">
                         Back to Dashboard
                     </Link>
                 </div>
