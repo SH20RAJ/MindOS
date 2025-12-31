@@ -7,6 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useStackApp, useUser } from "@stackframe/stack";
 import { cn } from "@/lib/utils";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 
 const navigation = [
     { name: "Dashboard", href: "/mindcloud", icon: LayoutDashboard },
