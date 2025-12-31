@@ -7,12 +7,12 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 interface ProjectHeaderProps {
     title: string;
-    description: string;
-    mastery: number;
+    description?: string;
+    progress: number;
     streak: number;
 }
 
-export function ProjectHeader({ title, description, mastery, streak }: ProjectHeaderProps) {
+export function ProjectHeader({ title, description, progress, streak }: ProjectHeaderProps) {
     return (
         <div className="relative border-b border-white/10 bg-black/50 backdrop-blur-xl z-20">
             <div className="max-w-[1600px] mx-auto px-6 py-8">
@@ -62,12 +62,12 @@ export function ProjectHeader({ title, description, mastery, streak }: ProjectHe
                                     strokeLinecap="round"
                                     strokeDasharray="251.2"
                                     initial={{ strokeDashoffset: 251.2 }}
-                                    animate={{ strokeDashoffset: 251.2 - (251.2 * mastery) / 100 }}
+                                    animate={{ strokeDashoffset: 251.2 - (251.2 * progress) / 100 }}
                                     transition={{ duration: 1.5, ease: "easeOut" }}
                                 />
                             </svg>
                             <div className="text-center">
-                                <span className="block text-2xl font-black text-white">{mastery}%</span>
+                                <span className="block text-2xl font-black text-white">{progress}%</span>
                                 <span className="block text-[10px] text-muted-foreground font-mono uppercase">Mastery</span>
                             </div>
 

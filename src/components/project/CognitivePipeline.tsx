@@ -5,7 +5,19 @@ import { FileUp, Database, BrainCircuit, Play, FileText, Globe, Youtube, Plus } 
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { cn } from "@/lib/utils";
 
-export function CognitivePipeline() {
+export interface CognitiveItem {
+    id: number;
+    title: string;
+    type: string;
+    status: string;
+    retention: number;
+}
+
+interface CognitivePipelineProps {
+    initialItems: CognitiveItem[];
+}
+
+export function CognitivePipeline({ initialItems }: CognitivePipelineProps) {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full min-h-[600px]">
             {/* Stage 1: Ingest (Source) */}
