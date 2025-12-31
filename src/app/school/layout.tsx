@@ -1,4 +1,4 @@
-"use client";
+
 
 import Link from "next/link";
 import { GraduationCap, LayoutDashboard, Users, BookOpen, Settings, LogOut } from "lucide-react";

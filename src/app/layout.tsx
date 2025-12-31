@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Provider from "@/components/ui/provider";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -36,12 +35,8 @@ export const metadata: Metadata = {
 	},
 };
 
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-
-import { StackProvider, StackTheme } from "@stackframe/stack";
+import { StackProvider } from "@stackframe/stack";
 import { stackServerApp } from "@/stack";
-
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 export default function RootLayout({
@@ -57,8 +52,6 @@ export default function RootLayout({
 				<StackProvider app={stackServerApp}>
 					<TooltipProvider>
 						{children}
-						<Navbar />
-						<Footer />
 					</TooltipProvider>
 				</StackProvider>
 			</body>

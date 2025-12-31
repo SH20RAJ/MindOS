@@ -1,10 +1,12 @@
-"use client";
-
 import { RetentionHeatmap } from "@/components/school/RetentionHeatmap";
 import { ArrowUpRight, BrainCircuit, Users, Zap } from "lucide-react";
 import Link from "next/link";
+import { SchoolActivityFeed } from "@/components/school/SchoolActivityFeed";
 
 export default function SchoolDashboard() {
+    // This is now a Server Component
+    // Future: Fetch data here
+
     return (
         <div className="p-8">
             <header className="mb-12">
@@ -32,7 +34,7 @@ export default function SchoolDashboard() {
             </header>
 
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-                {/* Main Content - Heatmap */}
+                {/* Main Content - Heatmap (Client Component) */}
                 <div className="xl:col-span-2 space-y-8">
                     <RetentionHeatmap />
 
@@ -47,23 +49,8 @@ export default function SchoolDashboard() {
                     </div>
                 </div>
 
-                {/* Sidebar - Activity Feed */}
-                <div className="bg-zinc-900/30 border border-white/10 rounded-xl p-6 h-fit">
-                    <h3 className="font-bold text-white mb-6 uppercase tracking-widest text-sm">Live Brain Activity</h3>
-                    <div className="space-y-4">
-                        {[1, 2, 3, 4, 5].map((_, i) => (
-                            <div key={i} className="flex gap-3 items-start pb-4 border-b border-white/5 last:border-0">
-                                <div className="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 animate-pulse" />
-                                <div>
-                                    <p className="text-sm text-zinc-300">
-                                        <span className="font-bold text-white">Student {i + 1}</span> mastered <span className="text-indigo-400">ATP Synthesis</span>.
-                                    </p>
-                                    <span className="text-xs text-zinc-600 font-mono">2m ago</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                {/* Sidebar - Activity Feed (New Client Component) */}
+                <SchoolActivityFeed />
             </div>
         </div>
     );

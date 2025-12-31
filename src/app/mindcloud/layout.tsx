@@ -61,8 +61,6 @@ export default function MindCloudLayout({
                         <Plus className="w-4 h-4" /> New Resource
                     </button>
                 </div>
-
-                // ... inside navigation map ...
                 {navigation.map((item) => {
                     const isActive = pathname === item.href;
                     return (
