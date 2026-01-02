@@ -12,7 +12,7 @@ const navItems = [
     { name: "Projects", href: "/projects", icon: FolderKanban },
     { name: "School", href: "/school", icon: GraduationCap },
     { name: "Community", href: "/community", icon: Users },
-    { name: "Profile", href: "/profile", icon: User },
+    // { name: "Profile", href: "/profile", icon: User },
 ];
 
 export function Navbar() {

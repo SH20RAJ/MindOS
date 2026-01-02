@@ -47,11 +47,11 @@ export function VideoShowcase() {
                                 <Play className="w-10 h-10 text-white fill-current ml-1" />
                             </motion.div>
 
-                            <img
-                                src={`https://img.youtube.com/vi/qDBv3XDXAyI/maxresdefault.jpg`}
+                            {/* <img
+                                src={`https://img.youtube.com/vi/qDBv3XDXAyI/sddefault.jpg`}
                                 alt="MindOS Demo"
                                 className="absolute inset-0 w-full h-full object-cover -z-10"
-                            />
+                            /> */}
                         </div>
                     ) : (
                         <iframe
