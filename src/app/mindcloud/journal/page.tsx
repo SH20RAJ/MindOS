@@ -1,9 +1,10 @@
-import { Book, Calendar, ChevronRight, Edit3, MoreHorizontal, Plus, Search, Tag } from "lucide-react";
+import { JournalSearch } from "@/components/mindcloud/JournalSearch";
+import { Book, Calendar, Edit3, MoreHorizontal, Plus, Tag } from "lucide-react";
 import Link from "next/link";
 
 export default function JournalPage() {
     return (
-        <div className="max-w-4xl mx-auto h-full flex flex-col">
+        <div className="max-w-4xl- mx-auto h-full flex flex-col">
             {/* Header / Sub-nav */}
             <div className="flex items-center justify-between p-6 border-b border-white/10 bg-black sticky top-0 z-10">
                 <div>
@@ -16,13 +17,7 @@ export default function JournalPage() {
                     </p>
                 </div>
                 <div className="flex gap-3">
-                    <div className="relative">
-                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                        <input
-                            placeholder="Search entries..."
-                            className="bg-white/5 border border-white/10 rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/20 w-64 transition-all"
-                        />
-                    </div>
+                    <JournalSearch />
                     <Link href="/mindcloud/journal/new" className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg font-bold hover:opacity-90 transition-opacity">
                         <Plus className="w-4 h-4" /> New Entry
                     </Link>
