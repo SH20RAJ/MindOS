@@ -3,6 +3,7 @@
 import { Project } from "@/types/learning";
 import { Activity, Clock, Target, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export function ProjectOverview({ project }: { project: Project }) {
     return (
@@ -46,10 +47,12 @@ export function ProjectOverview({ project }: { project: Project }) {
                         <span className="font-mono text-emerald-400">Processing: Linear Algebra Basics</span>
                     </div>
                 </div>
+            </div>
+            <Link href={`/projects/${project.id}/tutor`}>
                 <button className="bg-white text-black px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:scale-105 transition-transform">
                     Start Session <ArrowRight className="w-4 h-4" />
                 </button>
-            </div>
+            </Link>
         </div>
     );
 }
