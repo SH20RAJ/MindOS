@@ -1,62 +1,88 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle2, Circle, Target, Workflow, Play } from "lucide-react";
+import Link from "next/link";
+import { Project } from "@/types/learning";
 import { cn } from "@/lib/utils";
-import { Disc } from "lucide-react";
 
-interface ProjectCardProps {
-    title: string;
-    category: string;
-    progress: number;
-    color?: string;
+interface EnhancedProjectCardProps {
+    project: Project;
 }
 
-export function ProjectCard({ title, category, progress, color = "bg-blue-500" }: ProjectCardProps) {
+export function ProjectCard({ project }: EnhancedProjectCardProps) {
+    const completedMilestones = project.milestones.filter(m => m.isCompleted).length;
+    const progress = Math.round((completedMilestones / project.milestones.length) * 100) || 0;
+
     return (
         <motion.div
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-            className="relative w-64 h-64 group cursor-pointer perspective-1000"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="group relative w-full h-full"
         >
-            {/* The Record (slides out) */}
-            <motion.div
-                variants={{
-                    rest: { x: 0, rotate: 0 },
-                    hover: { x: 80, rotate: 180 }
-                }}
-                transition={{ duration: 0.6, ease: "circOut" }}
-                className="absolute inset-0 rounded-full bg-black border border-white/20 shadow-xl flex items-center justify-center"
-            >
-                <div className="absolute inset-2 rounded-full border border-white/10 opacity-50" />
-                <div className="absolute inset-8 rounded-full border border-white/10 opacity-30" />
+            <div className="absolute -inset-0.5 bg-gradient-to-br from-white/10 to-transparent rounded-3xl blur opacity-0 group-hover:opacity-100 transition duration-500" />
 
-                {/* Center Label */}
-                <div className={cn("w-20 h-20 rounded-full flex items-center justify-center", color)}>
-                    <div className="w-3 h-3 bg-black rounded-full" />
+            <div className="relative h-full bg-zinc-950 border border-white/10 rounded-2xl p-6 flex flex-col hover:border-white/20 transition-colors">
+                {/* Header */}
+                <div className="flex justify-between items-start mb-6">
+                    <div className="space-y-1">
+                        <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground uppercase tracking-widest">
+                            <Workflow className="w-3 h-3" />
+                            <span>{project.status.replace('_', ' ')}</span>
+                        </div>
+                        <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-2">
+                            {project.title}
+                        </h3>
+                    </div>
                 </div>
 
-                {/* Grooves / Shine */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/10 to-transparent rotate-45" />
-            </motion.div>
-
-            {/* The Sleeve (stays put, on top) */}
-            <div className="absolute inset-0 bg-secondary border border-white/10 rounded-sm shadow-2xl overflow-hidden z-10 flex flex-col justify-end p-6">
-                <div className="absolute top-0 right-0 p-4">
-                    <span className="text-4xl font-black text-white/5">{progress}%</span>
+                {/* Milestones Preview */}
+                <div className="space-y-3 mb-8 flex-1">
+                    {project.milestones.slice(0, 3).map((milestone) => (
+                        <div key={milestone.id} className="flex items-center gap-3 text-sm text-zinc-400">
+                            {milestone.isCompleted ? (
+                                <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                            ) : (
+                                <Circle className="w-4 h-4 text-zinc-700 flex-shrink-0" />
+                            )}
+                            <span className={cn(milestone.isCompleted && "line-through opacity-50")}>
+                                {milestone.title}
+                            </span>
+                        </div>
+                    ))}
+                    {project.milestones.length > 3 && (
+                        <div className="px-7 text-xs text-muted-foreground italic">
+                            + {project.milestones.length - 3} more milestones
+                        </div>
+                    )}
                 </div>
 
-                <div>
-                    <span className="text-[10px] uppercase tracking-widest text-muted-foreground border border-white/10 rounded-full px-2 py-1 bg-black/50 backdrop-blur-md">
-                        {category}
-                    </span>
-                    <h3 className="text-xl font-bold text-white mt-2 leading-none uppercase tracking-tight">
-                        {title}
-                    </h3>
+                {/* Progress Bar */}
+                <div className="space-y-2 mb-6">
+                    <div className="flex justify-between text-xs font-mono text-muted-foreground">
+                        <span>PROGRESS</span>
+                        <span>{progress}%</span>
+                    </div>
+                    <div className="h-1 w-full bg-zinc-900 rounded-full overflow-hidden">
+                        <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${progress}%` }}
+                            transition={{ duration: 1, delay: 0.2 }}
+                            className="h-full bg-blue-500"
+                        />
+                    </div>
                 </div>
 
-                {/* Texture Overlay */}
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none" />
+                {/* Action */}
+                <Link
+                    href={`/projects/${project.id}`}
+                    className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group/btn"
+                >
+                    <span className="text-sm font-bold text-white">Open Project</span>
+                    <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center group-hover/btn:translate-x-1 transition-transform">
+                        <ArrowRight className="w-4 h-4 text-white" />
+                    </div>
+                </Link>
             </div>
         </motion.div>
     );
