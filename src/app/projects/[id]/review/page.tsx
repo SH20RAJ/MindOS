@@ -3,8 +3,8 @@
 import { ArrowRight, Check, RefreshCw } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { useParams } from "next/navigation";
 
 // Mock Project-Specific Deck
 const PROJECT_DECK = [
@@ -32,8 +32,8 @@ export default function ProjectReviewPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isRevealed, setIsRevealed] = useState(false);
     const [finished, setFinished] = useState(false);
-    const pathname = usePathname();
-    const projectId = pathname.split('/')[2]; // Extract project ID from URL
+    const params = useParams();
+    const projectId = params.id as string;
 
     const handleNext = () => {
         setIsRevealed(false);
