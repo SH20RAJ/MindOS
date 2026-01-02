@@ -13,7 +13,7 @@ const navigation = [
     { name: "Dashboard", href: "/mindcloud", icon: LayoutDashboard },
     { name: "Search", href: "/mindcloud/search", icon: Search },
     { name: "Resources", href: "/mindcloud/resources", icon: FileText },
-    { name: "Notes", href: "/mindcloud/notes", icon: StickyNote },
+    { name: "Journal", href: "/mindcloud/journal", icon: StickyNote },
     { name: "Knowledge Graph", href: "/mindcloud/graph", icon: Network },
     { name: "Profile", href: "/profile", icon: User },
 ];
@@ -57,9 +57,11 @@ export function MindCloudShell({
 
             <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
                 <div className="mb-8">
-                    <button className="w-full flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg font-bold hover:opacity-90 transition-opacity">
-                        <Plus className="w-4 h-4" /> New Resource
-                    </button>
+                    <div className="mb-8">
+                        <Link href="/mindcloud/resources/new" className="w-full flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg font-bold hover:opacity-90 transition-opacity justify-center">
+                            <Plus className="w-4 h-4" /> New Resource
+                        </Link>
+                    </div>
                 </div>
                 {navigation.map((item) => {
                     const isActive = pathname === item.href;
