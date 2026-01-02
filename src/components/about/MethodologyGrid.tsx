@@ -39,6 +39,24 @@ const methodologies = [
         title: "Ultradian Rhythms",
         description: "Optimizing study sessions to match your brain's natural 90-minute focus cycles for maximum efficiency.",
         color: "text-cyan-400"
+    },
+    {
+        icon: Activity,
+        title: "Retention Management",
+        description: "A systemic approach to visualizing cognitive decay. We track memory strength across all topics to prevent 'knowledge leaks'.",
+        color: "text-rose-400"
+    },
+    {
+        icon: GitBranch,
+        title: "Cognitive Push",
+        description: "Proactive injection of learning material. Instead of waiting for you to study, the system pushes critical reviews to your queue.",
+        color: "text-orange-400"
+    },
+    {
+        icon: Brain,
+        title: "The Forgetting Curve",
+        description: "Counteracting the natural exponential decay of memory (Ebbinghaus) by strategic reinforcement at calculated intervals.",
+        color: "text-indigo-400"
     }
 ];
 

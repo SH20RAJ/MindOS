@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Layers } from "lucide-react";
+import Link from "next/link";
 
 export function DailyReviewStack() {
     return (
@@ -35,9 +36,11 @@ export function DailyReviewStack() {
             <div className="mt-6 text-center">
                 <p className="text-3xl font-bold text-white mb-1">42 Cards</p>
                 <p className="text-sm text-muted-foreground">Due for review today</p>
-                <button className="mt-4 w-full py-2 bg-accent text-white rounded-lg font-bold text-sm uppercase tracking-wide hover:bg-accent/90 transition-colors">
-                    Start Review
-                </button>
+                <Link href="/mindcloud/review" className="block mt-4 w-full">
+                    <button className="w-full py-2 bg-accent text-white rounded-lg font-bold text-sm uppercase tracking-wide hover:bg-accent/90 transition-colors">
+                        Start Review
+                    </button>
+                </Link>
             </div>
         </div>
     );

@@ -7,7 +7,7 @@ export function ResourcesGrid({ resources }: { resources: any[] }) {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {resources.map((resource, i) => (
-                <Link key={i} href={`/mindcloud/resources/${i + 1}`} className="group p-5 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all cursor-pointer flex flex-col justify-between h-48">
+                <Link key={i} href={`/mindcloud/resources/${resource.type.toLowerCase()}/${i + 1}`} className="group p-5 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all cursor-pointer flex flex-col justify-between h-48">
                     <div>
                         <div className="flex justify-between items-start mb-3">
                             <span className={`text-[10px] font-bold px-2 py-1 rounded border ${resource.type === 'PDF' ? 'bg-red-500/10 text-red-400 border-red-500/20' :
