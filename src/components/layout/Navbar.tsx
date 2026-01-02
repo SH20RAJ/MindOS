@@ -4,13 +4,14 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { LayoutDashboard, FolderKanban, GraduationCap, User } from "lucide-react";
+import { LayoutDashboard, FolderKanban, GraduationCap, User, Users } from "lucide-react";
 import { UserButton } from "@stackframe/stack";
 
 const navItems = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
     { name: "Projects", href: "/projects", icon: FolderKanban },
     { name: "School", href: "/school", icon: GraduationCap },
+    { name: "Community", href: "/community", icon: Users },
     { name: "Profile", href: "/profile", icon: User },
 ];
 

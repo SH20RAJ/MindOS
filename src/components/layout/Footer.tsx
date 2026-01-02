@@ -6,6 +6,8 @@ export function Footer() {
                     "Built by Students, For Students."
                 </p>
                 <div className="flex justify-center gap-8 text-sm text-muted-foreground/60">
+                    <a href="/about" className="hover:text-white transition-colors">About</a>
+                    <a href="/community" className="hover:text-white transition-colors">Community</a>
                     <a href="#" className="hover:text-white transition-colors">Twitter</a>
                     <a href="#" className="hover:text-white transition-colors">Discord</a>
                     <a href="#" className="hover:text-white transition-colors">GitHub</a>
