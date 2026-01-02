@@ -3,7 +3,10 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
+import { useRouter } from "next/navigation";
+
 export default function SchoolLoginClient() {
+    const router = useRouter();
     return (
         <div className="min-h-screen bg-black flex items-center justify-center p-6 relative overflow-hidden">
             {/* Reuse previous logic */}
@@ -21,7 +24,10 @@ export default function SchoolLoginClient() {
                     <p className="text-muted-foreground text-sm text-center mb-8">Sign in to manage your school node.</p>
 
                     <div className="space-y-4">
-                        <button className="w-full bg-white text-black py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                        <button
+                            onClick={() => router.push('/school/quantum-uni/dashboard')}
+                            className="w-full bg-white text-black py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors"
+                        >
                             Continue with Google
                         </button>
                     </div>

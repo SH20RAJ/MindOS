@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { AboutHero } from "@/components/about/AboutHero";
 import { OriginStory } from "@/components/about/OriginStory";
 import { MethodologyGrid } from "@/components/about/MethodologyGrid";
@@ -7,8 +8,7 @@ import { Philosophy } from "@/components/about/Philosophy";
 import { AboutTestimonials } from "@/components/about/AboutTestimonials";
 import { CreativeBadges, type BadgeItem } from "@/components/ui/creative-badges";
 import { HumorTestimonials } from "@/components/about/HumorTestimonials";
-
-import type { Metadata } from "next";
+import { VideoShowcase } from "@/components/about/VideoShowcase";
 
 export const metadata: Metadata = {
     title: "About | MindOS",
@@ -37,6 +37,7 @@ export default function About() {
         <main className="min-h-screen bg-black text-white selection:bg-white selection:text-black font-sans overflow-x-hidden">
             <AboutHero />
             <OriginStory />
+            <VideoShowcase />
             <HumorTestimonials />
             <MethodologyGrid />
             <AboutBadges />
