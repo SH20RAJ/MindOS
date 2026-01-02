@@ -1,5 +1,5 @@
 import { MOCK_SCHOOLS } from "@/mock/school-data";
-import { BarChart3, BookOpen, Calendar, GraduationCap, LayoutDashboard, Settings, Users } from "lucide-react";
+import { BarChart3, BookOpen, Calendar, CreditCard, FileBarChart, GraduationCap, LayoutDashboard, Megaphone, Settings, Users } from "lucide-react";
 import Link from "next/link";
 
 export default function MultiTenantLayout({
@@ -48,6 +48,25 @@ export default function MultiTenantLayout({
                     </Link>
                     <Link href={`/school/${slug}/assignments`} className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-white hover:bg-white/5 rounded-lg transition-colors">
                         <GraduationCap className="w-4 h-4" /> Assignments
+                    </Link>
+                    <Link href={`/school/${slug}/library`} className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                        <BookOpen className="w-4 h-4" /> Library
+                    </Link>
+
+                    <div className="pt-4 pb-2">
+                        <div className="px-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Admin</div>
+                    </div>
+                    <Link href={`/school/${slug}/staff`} className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                        <Users className="w-4 h-4" /> Staff
+                    </Link>
+                    <Link href={`/school/${slug}/announcements`} className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                        <Megaphone className="w-4 h-4" /> News
+                    </Link>
+                    <Link href={`/school/${slug}/reports`} className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                        <FileBarChart className="w-4 h-4" /> Reports
+                    </Link>
+                    <Link href={`/school/${slug}/billing`} className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                        <CreditCard className="w-4 h-4" /> Billing
                     </Link>
                 </nav>
 
