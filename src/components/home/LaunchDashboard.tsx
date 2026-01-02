@@ -24,7 +24,7 @@ export function LaunchDashboard() {
                         UPGRADE YOUR<br />COGNITION.
                     </h2>
 
-                    <Link href={user ? "/mindcloud" : "/handler/sign-up"}>
+                    <Link href={user ? "/dashboard" : "/handler/sign-up"}>
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
