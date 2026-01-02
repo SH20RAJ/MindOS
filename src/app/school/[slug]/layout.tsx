@@ -2,14 +2,15 @@ import { MOCK_SCHOOLS } from "@/mock/school-data";
 import { BarChart3, BookOpen, Calendar, CreditCard, FileBarChart, GraduationCap, LayoutDashboard, Megaphone, Settings, Users } from "lucide-react";
 import Link from "next/link";
 
-export default function MultiTenantLayout({
+export default async function MultiTenantLayout({
     children,
     params
 }: {
     children: React.ReactNode;
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 }) {
-    const slug = params.slug;
+    // Await params for Next.js 15
+    const { slug } = await params;
     const school = MOCK_SCHOOLS.find(s => s.slug === slug);
 
     return (

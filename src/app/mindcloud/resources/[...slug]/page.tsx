@@ -1,7 +1,8 @@
-import { ArrowLeft, BookOpen, ExternalLink, MessageSquare, Share2 } from "lucide-react";
+import { ArrowLeft, BookOpen, MessageSquare, Share2 } from "lucide-react";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
-// Mock data database - in real app fetch from DB
+// Mock data database
 const MOCK_RESOURCES: Record<string, any> = {
     '1': {
         id: '1',
@@ -31,8 +32,24 @@ const MOCK_RESOURCES: Record<string, any> = {
     }
 };
 
-export default async function ResourceDetailPage({ params }: { params: Promise<{ type: string; id: string }> }) {
-    const { type, id } = await params;
+export default async function ResourceCatchAllPage({ params }: { params: Promise<{ slug: string[] }> }) {
+    const { slug } = await params;
+
+    // Parse Slug
+    // 1 segment: /resources/1 -> type="book" (default), id="1"
+    // 2 segments: /resources/book/1 -> type="book", id="1"
+
+    let type = "book";
+    let id = "";
+
+    if (slug.length === 1) {
+        id = slug[0];
+    } else if (slug.length === 2) {
+        type = slug[0];
+        id = slug[1];
+    } else {
+        return notFound();
+    }
 
     // Fallback for demo if id isn't in mock key directly
     const resource = MOCK_RESOURCES[id] || {
