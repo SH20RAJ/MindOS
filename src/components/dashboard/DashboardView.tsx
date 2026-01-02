@@ -4,9 +4,31 @@ import Link from "next/link";
 import { LayoutGrid, GraduationCap, BrainCircuit, ArrowRight, Activity, Zap, HardDrive } from "lucide-react";
 import { FocusTimer } from "@/components/dashboard/FocusTimer";
 import { DailyReviewStack } from "@/components/dashboard/DailyReviewStack";
+import { useEffect, useState } from "react";
+
+
+const QUOTES = [
+    { text: "What I cannot create, I do not understand.", author: "Richard Feynman" },
+    { text: "The purpose of computing is insight, not numbers.", author: "Richard Hamming" },
+    { text: "Learning is not a spectator sport.", author: "D. Blocher" },
+    { text: "Education is what remains after one has forgotten what one has learned in school.", author: "Albert Einstein" },
+    { text: "Civilization advances by extending the number of important operations which we can perform without thinking about them.", author: "Alfred North Whitehead" },
+    { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
+    { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+    { text: "It is not knowledge, but the act of learning, not possession but the act of getting there, which grants the greatest enjoyment.", author: "Carl Friedrich Gauss" },
+    { text: "I think, therefore I am.", author: "René Descartes" },
+    { text: "The details are not the details. They make the design.", author: "Charles Eames" },
+    { text: "Design is intelligence made visible.", author: "Alina Wheeler" },
+    { text: "Everything should be made as simple as possible, but not simpler.", author: "Albert Einstein" },
+];
 
 export function DashboardView() {
     const currentDate = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    const [quote, setQuote] = useState<{ text: string, author: string } | null>(null);
+
+    useEffect(() => {
+        setQuote(QUOTES[new Date().getHours() % QUOTES.length]);
+    }, []);
 
     return (
         <div className="min-h-screen bg-black text-white p-6 md:p-12 font-sans selection:bg-indigo-500/30">
@@ -23,9 +45,23 @@ export function DashboardView() {
                         <h1 className="text-5xl md:text-6xl font-black tracking-tighter mb-2 bg-gradient-to-r from-white via-white to-zinc-500 bg-clip-text text-transparent">
                             COMMAND CENTER
                         </h1>
-                        <p className="text-muted-foreground font-mono text-sm flex items-center gap-2">
+                        <p className="text-muted-foreground font-mono text-sm flex items-center gap-2 mb-6">
                             <span className="text-emerald-500">●</span> {currentDate}
                         </p>
+
+                        {quote && (
+                            <div className="p-4 bg-white/5 border border-white/10 rounded-xl flex items-start gap-4 max-w-lg backdrop-blur-sm">
+                                <div className="p-1.5 bg-indigo-500/20 rounded-md shrink-0">
+                                    <Zap className="w-4 h-4 text-indigo-400 fill-current" />
+                                </div>
+                                <div>
+                                    <blockquote className="text-sm font-medium text-white italic mb-1">
+                                        "{quote.text}"
+                                    </blockquote>
+                                    <div className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">— {quote.author}</div>
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     <div className="flex items-center gap-4">
