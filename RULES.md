@@ -351,3 +351,7 @@ export default function LandingPage() {
 ```
 
 This approach ensures optimal performance while maintaining clean, maintainable code.
+
+---
+
+Never make any page.tsx or layout.tsx a client compo use all metadata exports 
