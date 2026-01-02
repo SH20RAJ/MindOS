@@ -71,6 +71,40 @@ The existing retention heatmap becomes the daily driver for teachers to monitor 
 ### Phase 4: The Student Integration
 - Create the "Enrollment" flow (Student enters code -> Gets graph nodes added).
 
+### E. The Assignment System ("Cognitive Tasks")
+**Philosophy:** Homework isn't just "busy work". It is the *verification mechanism* for the Knowledge Graph.
+- **Workflow:**
+    1.  Teacher selects a Node (e.g., "Mitochondria").
+    2.  Teacher clicks "Create Task".
+    3.  **Task Types:**
+        - *Quiz:* Auto-graded retention check.
+        - *Proof of Work:* Student uploads image/video/link.
+        - *Syntopical Reading:* "Read this article and highlight key insights."
+    4.  **Grading:** Teacher uses a "Speed Grader" to approve proofs. content is then "Unlocked" in the student's graph.
+
+## 5. Authentication & Management Strategy
+
+### A. The "Smooth" Login Flow
+We differentiate by User Persona to maximize security and minimize friction.
+
+**1. School Admins & Teachers (The Managers)**
+- **Method:** **Magic Link / Enterprise SSO (Google/Microsoft).**
+- **Why:** High security required (student data). Schools usually live in Microsoft Teams or Google Classroom.
+- **Flow:** `/school/login` -> "Continue with Google" -> Detects School Domain -> Redirects to `/school/[slug]/dashboard`.
+
+**2. Students (The Learners)**
+- **Challenge:** Students often forget passwords or don't have email access (younger years).
+- **Strategy:** **"Class Code" + "Seat Claiming".**
+    *   Teacher generates a "Class Code" (e.g., `PHYS-2026`).
+    *   Student visits `/school/join`.
+    *   Enters Code + Name.
+    *   System creates a provisional account. Student sets a password later to "Claim" the seat permanently.
+
+### B. Management Hierarchy
+- **Super Admin (Principal):** Can view all courses, global retention heatmap, and manage billing.
+- **Course Lead (Teacher):** Can edit syllabus, grade assignments, push content.
+- **Teaching Assistant:** Can only grade and view heatmap.
+
 ## Integration with MindOS Core
 The killer feature: **Cross-Polination.**
 If a student learns "Linear Algebra" in their "University" context, that node is unlocked in their "Personal" context too. MindOS becomes the unified record of their intellect.
