@@ -3,7 +3,7 @@
 import { Plus, LayoutGrid, Activity, Search, Filter, Cpu, ArrowUpRight, BarChart, ChevronRight, Zap, Target, MoreVertical, Flame } from "lucide-react";
 import Link from "next/link";
 import { MOCK_PROJECTS } from "@/mock/data";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -26,7 +26,7 @@ export function ProjectHubView() {
     const activeProjects = projects.length;
     
     // Animation Variants
-    const containerVariants = {
+    const containerVariants: Variants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
@@ -36,7 +36,7 @@ export function ProjectHubView() {
         }
     };
 
-    const itemVariants = {
+    const itemVariants: Variants = {
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
     };
@@ -130,10 +130,12 @@ export function ProjectHubView() {
                             
                             <div className="h-8 w-px bg-white/10 my-auto mx-1" />
 
-                            <button className="h-11 px-6 flex items-center gap-2 bg-white text-black rounded-xl hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 transition-all text-sm font-bold tracking-tight">
-                                <Plus className="w-4 h-4" />
-                                <span className="hidden sm:inline">New Protocol</span>
-                            </button>
+                <Link href="/projects/new">
+                    <button className="h-11 px-6 flex items-center gap-2 bg-white text-black rounded-xl hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 transition-all text-sm font-bold tracking-tight">
+                        <Plus className="w-4 h-4" />
+                        <span className="hidden sm:inline">New Protocol</span>
+                    </button>
+                </Link>
                         </div>
                     </div>
                 </motion.div>
@@ -243,22 +245,24 @@ export function ProjectHubView() {
                     })}
 
                     {/* New Project Workflow Trigger */}
-                    <motion.button 
-                        variants={itemVariants}
-                        className="group relative h-[340px] rounded-[28px] border border-dashed border-zinc-800 hover:border-zinc-600 bg-transparent hover:bg-zinc-900/20 transition-all duration-300 flex flex-col items-center justify-center gap-5"
-                    >
-                        <div className="w-20 h-20 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:scale-110 group-hover:border-white/20 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500">
-                            <Plus className="w-8 h-8 text-zinc-600 group-hover:text-white transition-colors" />
-                        </div>
-                        <div className="text-center">
-                            <span className="block font-mono text-sm uppercase tracking-widest font-bold text-zinc-500 group-hover:text-white transition-colors">
-                                Initialize Protocol
-                            </span>
-                            <span className="text-xs text-zinc-600 mt-2 block group-hover:text-zinc-500">
-                                Start a new learning arc
-                            </span>
-                        </div>
-                    </motion.button>
+                    <Link href="/projects/new" className="block">
+                        <motion.div 
+                            variants={itemVariants}
+                            className="group relative h-[340px] rounded-[28px] border border-dashed border-zinc-800 hover:border-zinc-600 bg-transparent hover:bg-zinc-900/20 transition-all duration-300 flex flex-col items-center justify-center gap-5 cursor-pointer"
+                        >
+                            <div className="w-20 h-20 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:scale-110 group-hover:border-white/20 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500">
+                                <Plus className="w-8 h-8 text-zinc-600 group-hover:text-white transition-colors" />
+                            </div>
+                            <div className="text-center">
+                                <span className="block font-mono text-sm uppercase tracking-widest font-bold text-zinc-500 group-hover:text-white transition-colors">
+                                    Initialize Protocol
+                                </span>
+                                <span className="text-xs text-zinc-600 mt-2 block group-hover:text-zinc-500">
+                                    Start a new learning arc
+                                </span>
+                            </div>
+                        </motion.div>
+                    </Link>
                 </motion.div>
             </div>
         </div>
