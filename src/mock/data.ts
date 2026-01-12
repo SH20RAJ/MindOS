@@ -130,6 +130,44 @@ export const MOCK_PROJECTS: Project[] = [
             }
         ],
     }
+    {
+        id: 'os-kernel',
+        title: 'Operating System Development',
+        goalId: 'g-3',
+        description: 'Build a Unix-like kernel from scratch, focusing on memory management and process scheduling.',
+        status: 'in_progress',
+        createdAt: '2026-01-12T10:00:00Z',
+        milestones: [
+            {
+                id: 'm-os1',
+                title: 'Bootloader & Real Mode',
+                description: 'Write a basic bootloader in Assembly to switch to Protected Mode.',
+                isCompleted: true,
+                linkedConcepts: ['c-os1'],
+            },
+            {
+                id: 'm-os2',
+                title: 'Kernel Entry & VGA Driver',
+                description: 'Implement kmain() in C and write a VGA text mode driver.',
+                isCompleted: true,
+                linkedConcepts: ['c-os2'],
+            },
+            {
+                id: 'm-os3',
+                title: 'Interrupt Descriptor Table (IDT)',
+                description: 'Handle CPU exceptions and hardware interrupts (keyboard, timer).',
+                isCompleted: false,
+                linkedConcepts: ['c-os3'],
+            },
+            {
+                id: 'm-os4',
+                title: 'Paging & Memory Management',
+                description: 'Implement virtual memory, paging, and a heap allocator.',
+                isCompleted: false,
+                linkedConcepts: ['c-os4'],
+            }
+        ],
+    }
 ];
 
 // --- 4. Daily Tasks (The "OS" Feed) ---
